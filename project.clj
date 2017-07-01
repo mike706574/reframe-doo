@@ -33,11 +33,18 @@
                        :dev {:source-paths ["src"]
                              :figwheel {:on-jsload "example.core/run"}
                              :compiler {:output-to "resources/public/js/client.js"
+                                        :output-dir "resources/public/js"
                                         :main "example.core"
                                         :asset-path "js"
                                         :optimizations :none
                                         :source-map true
-                                        :source-map-timestamp true}}}}
+                                        :source-map-timestamp true}}
+                       :production {:source-paths ["src"]
+                                    :compiler {:output-dir "target/js"
+                                               :optimizations :advanced
+                                               :elide-asserts true
+                                               :pretty-print false
+                                               :output-to "resources/public/client.js"}}}}
   :doo {:build "test"
         :alias {:default [:phantom]
                 :browsers [:chrome :firefox]
